@@ -1,0 +1,6 @@
+@Arrecadar_HostAddress = http://localhost:5200
+
+GET {{Arrecadar_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
