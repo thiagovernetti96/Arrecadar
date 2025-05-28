@@ -12,7 +12,22 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+
 var app = builder.Build();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsRestrito", policy =>
+    {
+        policy
+            .WithOrigins( "http://localhost:3000")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
+app.UseCors("CorsRestrito");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
