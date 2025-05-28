@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Arrecadar")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+89296dffe89a3ff2401fc979a1f586c2372d8b55")]
 [assembly: System.Reflection.AssemblyProductAttribute("Arrecadar")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Arrecadar")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
