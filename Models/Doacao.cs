@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Arrecadar.ExternalModels;
 
 
 namespace Arrecadar.Models
@@ -29,7 +30,12 @@ namespace Arrecadar.Models
         [Required]
         public Status_Doacao Status { get; set; }
 
+        public string ?AbacatePayBillId { get; set; }
+        public string ?AbacatePayUrl { get; set; }
 
+        [NotMapped]
+        public PaymentData PaymentData { get; set; }
+       
 
     }
 }

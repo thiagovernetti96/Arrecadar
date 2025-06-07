@@ -4,6 +4,7 @@ using Arrecadar.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Arrecadar.Migrations
 {
     [DbContext(typeof(ArrecadarContext))]
-    partial class ArrecadarContextModelSnapshot : ModelSnapshot
+    [Migration("20250604200921_campos opcionais na doacao")]
+    partial class camposopcionaisnadoacao
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

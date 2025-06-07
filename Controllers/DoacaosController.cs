@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Arrecadar.Data;
 using Arrecadar.Models;
+using Arrecadar.Integração.Interfaces;
+using Arrecadar.Dto;
+using Arrecadar.ExternalModels;
 
 namespace Arrecadar.Controllers
 {
@@ -103,6 +106,65 @@ namespace Arrecadar.Controllers
         private bool DoacaoExists(int id)
         {
             return _context.Doacao.Any(e => e.Id == id);
+        }
+
+        [HttpPost("realizar")]
+        public async Task<ActionResult> RealizarDoacao([FromBody] DoacaoDto dto, [FromServices] IAbacatePayApi abacatePayApi)
+        {
+            var doacao = new Doacao
+            {
+                CampanhaId = dto.CampanhaId,
+                Valor_Doado = dto.Valor,
+                Metodo = Doacao.Metodo_Pagamento.Pix,
+                Status = Doacao.Status_Doacao.Pendente,
+                Data = DateTime.Now,
+
+            };
+
+            _context.Doacao.Add(doacao);
+            await _context.SaveChangesAsync(); // Salva antes para garantir o ID
+
+            var request = new PaymentRequest
+            {
+                Data = new PaymentRequestData
+                {
+                    Amount = (int)(doacao.Valor_Doado * 100), // centavos
+                    Methods = new List<string> { "PIX" },
+                    Frequency = "ONE_TIME",
+                    Products = new List<PaymentProductRequest>
+            {
+                new PaymentProductRequest
+                {
+                    ExternalId = $"doacao-{doacao.Id}",
+                    Quantity = 1
+                }
+            },
+                    Customer = new PaymentCustomerRequest
+                    {
+                        Metadata = new PaymentCustomerMetadata
+                        {
+                            Name = dto.Nome,
+                            Cellphone = dto.Celular,
+                            Email = dto.Email,
+                            TaxId = dto.Cpf
+                        }
+                    }
+                }
+            };
+
+            var response = await abacatePayApi.CreatePaymentAsync(request);
+
+            doacao.AbacatePayBillId = response.Data.Id;
+            doacao.AbacatePayUrl = response.Data.Url;
+            doacao.Status = Doacao.Status_Doacao.Processando;
+             _context.Doacao.Add(doacao);
+            await _context.SaveChangesAsync();
+
+            return Ok(new
+            {
+                doacao.Id,
+                pagamentoUrl = doacao.AbacatePayUrl
+            });
         }
     }
 }

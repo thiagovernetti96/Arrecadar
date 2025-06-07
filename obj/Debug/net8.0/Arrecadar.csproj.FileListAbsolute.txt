@@ -259,3 +259,12 @@ C:\Users\Home\source\repos\Arrecadar\Arrecadar\obj\Debug\net8.0\refint\Arrecadar
 C:\Users\Home\source\repos\Arrecadar\Arrecadar\obj\Debug\net8.0\Arrecadar.pdb
 C:\Users\Home\source\repos\Arrecadar\Arrecadar\obj\Debug\net8.0\Arrecadar.genruntimeconfig.cache
 C:\Users\Home\source\repos\Arrecadar\Arrecadar\obj\Debug\net8.0\ref\Arrecadar.dll
+C:\Users\Home\source\repos\Arrecadar\Arrecadar\bin\Debug\net8.0\MercadoPago.dll
+C:\Users\Home\source\repos\Arrecadar\Arrecadar\obj\Debug\net8.0\Arrecadar.sourcelink.json
+C:\Users\Home\source\repos\Arrecadar\Arrecadar\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.dll
+C:\Users\Home\source\repos\Arrecadar\Arrecadar\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+C:\Users\Home\source\repos\Arrecadar\Arrecadar\bin\Debug\net8.0\Microsoft.Extensions.Http.dll
+C:\Users\Home\source\repos\Arrecadar\Arrecadar\bin\Debug\net8.0\Refit.dll
+C:\Users\Home\source\repos\Arrecadar\Arrecadar\bin\Debug\net8.0\Refit.HttpClientFactory.dll
+C:\Users\Home\source\repos\Arrecadar\Arrecadar\bin\Debug\net8.0\System.Net.Http.Formatting.dll
+C:\Users\Home\source\repos\Arrecadar\Arrecadar\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
